@@ -1,0 +1,20 @@
+https://www.hostinger.com.br/tutoriais/install-docker-ubuntu?ppc_campaign=google_search_generic_hosting_all&bidkw=defaultkeyword&lo=9100067&gad_source=1&gclid=CjwKCAiAloavBhBOEiwAbtAJOw_eFSNkBg_VDhzaMG51o1Ke5n-RVINcj6FnGTchXSstNGG9UVzixhoCrZ4QAvD_BwE
+
+sudo apt update
+sudo apt upgrade
+
+sudo apt-get install  curl apt-transport-https ca-certificates software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+
+sudo apt update
+
+apt-cache policy docker-ce
+
+sudo apt install docker-ce
+
+sudo usermod -aG docker $(whoami)
+
+restart machine

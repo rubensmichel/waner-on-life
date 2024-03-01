@@ -1,0 +1,2 @@
+rm -rf "file name"
+ls -la // see files hidden and not hidden in folder

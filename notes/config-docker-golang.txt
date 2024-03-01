@@ -1,0 +1,27 @@
+https://dev.to/divrhino/build-a-rest-api-from-scratch-with-go-and-docker-3o54
+
+Dockerfile
+
+FROM golang:1.19.0
+WORKDIR /usr/src/app
+
+====================================
+
+docker-compose.yml
+
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+
+======================================
+
+docker compose up
+docker compose run --service-ports web bash
+go version
+======================================
