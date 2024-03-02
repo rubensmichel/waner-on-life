@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	fmt.Print(context.Background(), "Starting Fraud Prevention SPD application")
+	fmt.Print(context.Background(), "Starting Waner On Life Application")
 
 	ft, err := internal.NewFactory()
 	if err != nil {

@@ -17,8 +17,7 @@ const (
 	KindNotFound
 	KindConflict
 	KindNotImplemented
-
-	applicationErrorPrefix = "FPS-"
+	applicationErrorPrefix = "WOL-"
 )
 
 type Error struct {

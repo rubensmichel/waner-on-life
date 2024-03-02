@@ -5,12 +5,11 @@ import (
 )
 
 var (
-	ErrInvalidInput         = newError(KindInvalidInput, "0001", "invalid input")
-	ErrEntityNotFound       = newError(KindNotFound, "0002", "entity not found")
-	ErrInvalidAppClient     = newError(KindNotFound, "0003", "invalid client")
-	ErrMalformedPayload     = newError(KindBusinessRule, "0004", "http request payload is malformed")
-	ErrRequestNotFound      = newError(KindBusinessRule, "0005", "request not found")
-	ErrUnableRetrieveSecret = newError(KindInternalError, "0006", "Unable to retrieve secret from AWS Secrets Manager")
+	ErrInvalidInput     = newError(KindInvalidInput, "0001", "invalid input")
+	ErrEntityNotFound   = newError(KindNotFound, "0002", "entity not found")
+	ErrInvalidAppClient = newError(KindNotFound, "0003", "invalid client")
+	ErrMalformedPayload = newError(KindBusinessRule, "0004", "http request payload is malformed")
+	ErrRequestNotFound  = newError(KindBusinessRule, "0005", "request not found")
 )
 
 func ErrServiceConnection(serviceName string) Error {
@@ -51,8 +50,4 @@ func ErrSecretKeyNotFound(secretKey, secretName string) Error {
 
 func ErrPathNotFound(path string) Error {
 	return newError(KindNotFound, "0019", fmt.Sprintf("URL path '%s' not found", path))
-}
-
-func ErrSPDRestrictionTimelineNotUpdated(actionName string) Error {
-	return newError(KindInternalError, "0020", fmt.Sprintf("Restriction was %s, but SPD Restriction Timeline was not updated", actionName))
 }
