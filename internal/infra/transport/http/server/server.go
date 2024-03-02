@@ -7,7 +7,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 	"github.com/rubensmichel/waner-on-life/internal"
 
-	getStatus "github.com/rubensmichel/waner-on-life/internal/usecase/test/get"
+	getuser "github.com/rubensmichel/waner-on-life/internal/usecase/user/get"
 )
 
 const (
@@ -21,9 +21,9 @@ type httpServer struct {
 func New(ft *internal.Factory) *httpServer {
 	app := fiber.New(fiber.Config{ReadBufferSize: 8192})
 
-	router := app.Group("/test/v1")
+	router := app.Group("/waner-on-life/v1")
 
-	router.Get("/status", adaptRoute(getStatus.NewController(ft)))
+	router.Get("/users", adaptRoute(getuser.NewController(ft)))
 
 	app.Use(routeNotFound())
 

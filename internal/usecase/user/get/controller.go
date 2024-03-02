@@ -21,9 +21,9 @@ func NewController(fc *factory.Factory) http.Controller {
 }
 
 func (ctrl *Controller) Handler(ctx context.Context, req http.Request) http.Response {
-	restrictions, err := ctrl.usc.Get(ctx)
+	users, err := ctrl.usc.Get(ctx)
 	if err != nil {
 		return http.HandlerError(ctx, err)
 	}
-	return http.Ok(restrictions)
+	return http.Ok(users)
 }

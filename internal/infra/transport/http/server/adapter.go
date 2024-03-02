@@ -63,10 +63,10 @@ func handleRequest(fctx *fiber.Ctx, ctrl http.Controller) http.Response {
 
 func adaptHeaders(headers map[string][]string) map[string]string {
 	newHeaders := map[string]string{}
-	i := 0
 	for k, v := range headers {
-		newHeaders[strings.ToLower(k)] = v[i]
-		i += 1
+		for _, str := range v {
+			newHeaders[strings.ToLower(k)] = str
+		}
 	}
 	return newHeaders
 }

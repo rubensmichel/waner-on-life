@@ -3,6 +3,7 @@ package get
 import (
 	"context"
 
+	entity "github.com/rubensmichel/waner-on-life/internal/domain"
 	"github.com/rubensmichel/waner-on-life/internal/infra/validators"
 )
 
@@ -17,5 +18,15 @@ func NewUseCase(inputValidator validators.InputValidator) *UseCase {
 }
 
 func (usc *UseCase) Get(ctx context.Context) ([]Output, error) {
-	return []Output{}, nil
+	output := []Output{}
+
+	users := []entity.User{{ID: 1}}
+
+	for _, v := range users {
+		output = append(output, Output{
+			ID: v.ID,
+		})
+	}
+
+	return output, nil
 }
