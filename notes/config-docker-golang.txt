@@ -23,5 +23,10 @@ services:
 
 docker compose up
 docker compose run --service-ports web bash
+ctrl+d exit root
+
+command example
 go version
 ======================================
+
+go run cmd/main.go -> start project
