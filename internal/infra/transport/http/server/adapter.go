@@ -28,7 +28,9 @@ func WithTimeout(duration time.Duration) RouteOption {
 }
 
 func adaptRoute(ctrl http.Controller, opts ...RouteOption) func(c *fiber.Ctx) error {
-	routeOptions := &Route{}
+	routeOptions := &Route{
+		RequestTimeout: httpRequestTimeout,
+	}
 
 	for _, opt := range opts {
 		opt(routeOptions)
