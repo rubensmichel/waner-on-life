@@ -15,6 +15,7 @@ type Controller struct {
 func NewController(fc *factory.Factory) http.Controller {
 	return &Controller{
 		usc: NewUseCase(
+			fc.DBUser,
 			validators.NewInput(),
 		),
 	}
