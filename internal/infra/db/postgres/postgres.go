@@ -3,9 +3,8 @@ package postgres
 import (
 	"fmt"
 	"log"
-	"os"
 
-	"github.com/divrhino/divrhino-trivia/models"
+	"github.com/rubensmichel/waner-on-life/internal/env"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
@@ -17,12 +16,13 @@ type Dbinstance struct {
 
 var DB Dbinstance
 
-func ConnectDb() (*gorm.DB, error) {
+func ConnectDb(env env.Env) (*gorm.DB, error) {
 	dsn := fmt.Sprintf(
-		"host=db user=%s password=%s dbname=%s port=5432 sslmode=disable TimeZone=America/SaoPaulo",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_NAME"),
+		"host=%s user=%s password=%s dbname=%s port=5432 sslmode=disable TimeZone=America/Sao_Paulo",
+		env.DBHost,
+		env.DBUser,
+		env.DBPassword,
+		env.DBName,
 	)
 
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
@@ -38,7 +38,7 @@ func ConnectDb() (*gorm.DB, error) {
 	db.Logger = logger.Default.LogMode(logger.Info)
 
 	log.Println("running migrations")
-	db.AutoMigrate(&models.Fact{})
+	db.AutoMigrate(AllLimitsTables()...)
 
 	return db, nil
 }

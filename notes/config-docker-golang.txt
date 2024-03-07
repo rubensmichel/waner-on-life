@@ -30,3 +30,8 @@ go version
 ======================================
 
 go run cmd/main.go -> start project
+
+============================================
+docker ps // mostra os containers ativos
+docker stop fd106c2d0bf3 // para a execução de um container
+docker compose up -d db // "db" no caso é um container unico com a imagem do banco, dessa forma eu posso rodar separado e o -d executa sem sujar o terminal

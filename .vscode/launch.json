@@ -8,7 +8,11 @@
         "mode": "auto",
         "program": "${workspaceFolder}/cmd/main.go",
         "env":{
-          "ENV": "hml"
+          "ENV": "hml",
+          "DB_USER": "test",
+          "DB_PASSWORD": "test",
+          "DB_NAME": "test",
+          "DB_HOST": "localhost"
         }
       }
     ]

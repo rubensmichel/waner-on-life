@@ -17,27 +17,20 @@ type Factory struct {
 
 func NewFactory() (*Factory, error) {
 	ft := Factory{}
-
 	appEnv, err := env.Load()
 	if err != nil {
 		return nil, err
 	}
 	ft.Env = appEnv
 
-	ft.DBUser = db.NewUserDB(ft.dtBase)
-
-	ft.ConnectDB()
-
-	return &ft, nil
-}
-
-func (f *Factory) ConnectDB() {
-	var err error
-	f.dtBase, err = postgres.ConnectDb()
+	ft.dtBase, err = postgres.ConnectDb(ft.Env)
 	if err != nil {
 		fmt.Println(err)
 	}
 
+	ft.DBUser = db.NewUserDB(ft.dtBase)
+
+	return &ft, nil
 }
 
 func (f *Factory) Shutdown() error {
