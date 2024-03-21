@@ -12,14 +12,14 @@ import (
 )
 
 var repoUser db.Users
-var dtbase *sqlite.InMemoryDB
+var database *sqlite.InMemoryDB
 
 func TestFindUsers(t *testing.T) {
 	c := context.Background()
-	dtbase, _ = sqlite.NewInMemoryDatabase(sqlite.AllLimitsTables())
-	defer dtbase.Close()
+	database, _ = sqlite.NewInMemoryDatabase(sqlite.AllLimitsTables())
+	defer database.Close()
 
-	repoUser = db.NewUserDB(dtbase.DB)
+	repoUser = db.NewUserDB(database.DB)
 
 	usc := getuser.NewUseCase(
 		repoUser,
